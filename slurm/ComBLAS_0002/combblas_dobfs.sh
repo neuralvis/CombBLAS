@@ -2,19 +2,17 @@
 
 ###
 # job name
-#SBATCH --job-name=CombBLAS_0001
+#SBATCH --job-name=CombBLAS_0002
 # specify its partition
 #SBATCH --partition=workq
 # job stdout file
-#SBATCH --output=CombBLAS_0001.%J.out
+#SBATCH --output=CombBLAS_0002.%J.out
 # job stderr file
-#SBATCH --error=CombBLAS_0001.%J.err
+#SBATCH --error=CombBLAS_0002.%J.err
 # maximum job time in HH:MM:SS
 #SBATCH --time=01:00:00
-#SBATCH --ntasks=16
-#SBATCH --cpus-per-task=8
-# maximum memory
-#SBATCH --mem-per-cpu=512M
+#SBATCH --ntasks=625
+#SBATCH --cpus-per-task=16
 ###
 
 # module restore PrgEnv-gnu
@@ -49,7 +47,7 @@ mkdir -p $PAT_RT_EXPDIR_BASE
 # Record the job start time
 export COMBBLAS_START=`date -uI'seconds'`
 # Run combblas 
-srun -n 16 -c 8 $COMBBLAS_BASE_DIR/_build/Applications/dobfs+tracing 16 \
+srun $COMBBLAS_BASE_DIR/_build/Applications/dobfs+tracing 30 \
     > $PAT_RT_EXPDIR_BASE/combblas.dobfs.out
 # Record the job end time
 export COMBBLAS_END=`date -uI'seconds'`

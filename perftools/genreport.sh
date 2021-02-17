@@ -16,7 +16,7 @@ pat_report -v \
 
 # extract csv from report
 grep  -oE "(nid\.[[:alnum:]]{3,6})" $DATA_DIR/NIDS.rpt > $DATA_DIR/NIDS.csv  
-rm $DATA_DIR/NIDS.rpt 
+# rm $DATA_DIR/NIDS.rpt 
 
 # generic report informing profiling for function groups
 pat_report -v \

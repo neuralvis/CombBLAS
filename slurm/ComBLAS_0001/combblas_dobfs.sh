@@ -49,7 +49,7 @@ mkdir -p $PAT_RT_EXPDIR_BASE
 # Record the job start time
 export COMBBLAS_START=`date -uI'seconds'`
 # Run combblas 
-srun $COMBBLAS_BASE_DIR/build/Applications/dobfs 16 \
+srun -n 16 -c 8 $COMBBLAS_BASE_DIR/_build/Applications/dobfs+tracing 16 \
     > $PAT_RT_EXPDIR_BASE/combblas.dobfs.out
 # Record the job end time
 export COMBBLAS_END=`date -uI'seconds'`

@@ -10,12 +10,12 @@ module load perftools-base perftools
 
 ```bash
 cd ComBLAS
-mkdir build
+mkdir _build
 cd build
 
 CC=`which cc` CXX=`which CC` \
 cmake .. \
--DCMAKE_INSTALL_PREFIX=../install \
+-DCMAKE_INSTALL_PREFIX=../_install \
 -DMPIEXEC_NUMPROC_FLAG=-n \
 -DMPIEXEC_EXECUTABLE=`which srun` \
 -DMPIEXEC_MAX_NUMPROCS=16
