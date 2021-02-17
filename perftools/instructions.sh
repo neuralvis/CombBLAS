@@ -3,7 +3,7 @@
 ## Set the environment
 
 ```bash
-module restore PrgEnv-gnu
+module restore PrgEnv-cray
 module load perftools-base perftools
 ```
 ## Build ComBLAS
@@ -11,7 +11,7 @@ module load perftools-base perftools
 ```bash
 cd ComBLAS
 mkdir _build
-cd build
+cd _build
 
 CC=`which cc` CXX=`which CC` \
 cmake .. \
@@ -28,7 +28,7 @@ make -j16
 
 
 ```bash
-cd build/Applications
+cd _build/Applications
 
 # for sampling experiment
 pat_build -Drtenv=PAT_RT_SUMMARY=1 -Drtenv=PAT_RT_TRACE_HOOKS=1 -u dobfs -o dobfs+sampling
@@ -43,7 +43,7 @@ pat_build -g mpi -Drtenv=PAT_RT_SUMMARY=1 -Drtenv=PAT_RT_TRACE_HOOKS=1 -u dobfs 
 * `-Drtenv=PAT_RT_TRACE_HOOKS=1` enables data from compiler hooks (i.e. `-finstrument-loops` above) to be captured in the craypat output. This one is not relevant since we are not enabling loop instrumentation
 * Using `-Drtenv=PAT_RT_SUMMARY=0` - i.e. disabling runtime summarization and data aggregation will **not** print any loop data
 
-## Run lammps
+## Run dobfs
 
 ```bash
 cd build/Applications
